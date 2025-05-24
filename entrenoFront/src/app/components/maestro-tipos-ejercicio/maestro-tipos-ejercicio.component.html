@@ -1,0 +1,30 @@
+<div class="maestro-ejercicio">
+  <h3>Gestión de Tipos de Ejercicio</h3>
+
+  <h4>Crear nuevo tipo</h4>
+  <div class="item-ejercicio">
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="nuevoTipo.nombre" />
+    </mat-form-field>
+
+    <button mat-raised-button class="btn-verde" (click)="crearTipo()">Crear</button>
+  </div>
+
+  <div *ngIf="tipos.length > 0">
+    <h4>Tipos existentes</h4>
+
+    <div *ngFor="let tipo of tipos" class="item-ejercicio">
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="tipo.nombre" />
+      </mat-form-field>
+
+      <button mat-raised-button class="btn-verde" (click)="actualizarTipo(tipo)">Guardar</button>
+      <button mat-raised-button class="btn-rojo" (click)="eliminarTipo(tipo.id)">Eliminar</button>
+    </div>
+  </div>
+
+  <p *ngIf="tipos.length === 0">No hay tipos de ejercicio registrados.</p>
+</div>
+

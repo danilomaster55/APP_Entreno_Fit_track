@@ -1,0 +1,29 @@
+.entrenamientos-layout {
+  display: flex;
+  gap: 24px;
+  padding: 16px;
+}
+
+.entrenamientos-lista {
+  flex: 1;
+  max-width: 400px;
+  overflow-y: auto;
+}
+
+.entrenamiento-detalle {
+  flex: 2;
+  overflow-y: auto;
+}
+
+.no-entrenamientos {
+  text-align: center;
+  padding: 20px;
+  color: #e06b0b; /* Color rojo suave para el mensaje */
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.titulo-panel {
+  width: 100%;
+  font-size: 20px;
+}

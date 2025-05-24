@@ -1,0 +1,42 @@
+<div class="maestro-intensidad">
+  <h3>Gestión de Intensidades</h3>
+    <h4>Crear nueva intensidad</h4>
+  <div class="item-intensidad">
+  <mat-form-field appearance="outline" class="campo">
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="nuevaIntensidad.nombre" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="campo">
+    <mat-label>Descanso (segundos)</mat-label>
+    <input matInput type="number" [(ngModel)]="nuevaIntensidad.segundosDescanso" />
+  </mat-form-field>
+
+  <button mat-raised-button class="btn-verde" (click)="crearIntensidad()">Crear</button>
+</div>
+
+
+  
+
+  <div class="lista-intensidades" *ngIf="intensidades.length > 0">
+    <h4>Intensidades existentes</h4>
+
+    <div *ngFor="let intensidad of intensidades" class="item-intensidad">
+  <mat-form-field appearance="outline" class="campo">
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="intensidad.nombre" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="campo">
+    <mat-label>Descanso</mat-label>
+    <input matInput type="number" [(ngModel)]="intensidad.segundosDescanso" />
+  </mat-form-field>
+
+  <button mat-raised-button class="btn-verde" (click)="actualizarIntensidad(intensidad)">Guardar</button>
+  <button mat-raised-button class="btn-rojo" (click)="eliminarIntensidad(intensidad.id)">Eliminar</button>
+</div>
+
+  </div>
+
+  <p *ngIf="intensidades.length === 0">No hay intensidades registradas.</p>
+</div>

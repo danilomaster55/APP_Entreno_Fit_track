@@ -1,0 +1,263 @@
+.card-seleccion {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  margin-bottom: 2rem;
+}
+
+.seleccion-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.seccion-izquierda,
+.seccion-derecha {
+  flex: 1;
+}
+
+.seccion-derecha {
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 1rem;
+  max-height: 100%;
+  overflow-y: auto;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+
+.resumen-entrenamiento {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+
+.resumen-entrenamiento input,
+.resumen-entrenamiento select {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+.titulo-con-boton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.titulo-con-boton h3 {
+  margin: 0;
+}
+
+.titulo-con-boton button {
+  padding: 0.4rem 1rem;
+  border: none;
+  background-color: #f06c20;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.titulo-con-boton button:hover {
+  background-color: #0056b3;
+}
+
+.ejercicio-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background-color: #fdfdfd;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+
+.btn-eliminar {
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #c00;
+  transition: color 0.2s;
+}
+
+.btn-eliminar:hover {
+  color: #900;
+}
+
+.ejercicio-controlado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  background-color: #fdfdfd;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.controles-ejercicio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.controles-ejercicio button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #c00;
+  transition: color 0.2s;
+}
+
+.controles-ejercicio button:hover {
+  color: #900;
+}
+
+.mensaje-aviso {
+  color: #080808;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.resumen-layout {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.zona-entrada,
+.zona-vista-previa {
+  flex: 1;
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.zona-entrada label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.zona-entrada input,
+.zona-entrada textarea,
+.zona-entrada select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.guardar-btn {
+  margin-top: 20px;
+  background-color: #eee;
+  border: none;
+  color: #333;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background-color 0.2s;
+}
+
+.guardar-btn:hover {
+  background-color: #ddd;
+}
+.imprimir-btn {
+  margin-top: 20px;
+  background-color: #eee;
+  border: none;
+  color: #333;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background-color 0.2s;
+}
+
+.imprimir-btn:hover {
+  background-color: #ddd;
+}
+
+.zona-vista-previa {
+  padding: 2rem;
+  background: #fff;
+  color: #000;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.cabecera-pdf {
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 1rem;
+}
+
+.descripcion-pdf p {
+  margin: 0.3rem 0;
+}
+
+.seccion-ejercicios h3 {
+  margin-top: 1.5rem;
+  color: #333;
+}
+
+.bloque-ejercicio {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+
+.bloque-ejercicio img {
+  height: 60px;
+  width: auto;
+  border-radius: 4px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+
+.pie-logo {
+  text-align: center;
+  border-top: 1px solid #ccc;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  font-size: 12px;
+  color: #555;
+}
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: flex-start;
+}
+
+.mini-card {
+  width: 200px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.mini-card img {
+  height: 120px;
+  object-fit: cover;
+}
+

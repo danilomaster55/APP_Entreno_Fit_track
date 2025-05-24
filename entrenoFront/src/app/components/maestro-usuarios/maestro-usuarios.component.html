@@ -1,0 +1,126 @@
+<div class="maestro-usuarios">
+  <h3>Gestión de Usuarios</h3>
+
+  <!-- Crear usuario -->
+  <h4>Crear nuevo usuario</h4>
+  <div class="form-usuario">
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Username</mat-label>
+      <input matInput [(ngModel)]="nuevoUsuario.username">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" [(ngModel)]="nuevoUsuario.password">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Tipo de usuario</mat-label>
+      <mat-select [(ngModel)]="nuevoUsuario.tipoUsuarioId">
+        <mat-option *ngFor="let tipo of tiposUsuario" [value]="tipo.id">{{ tipo.nombre }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Teléfono 1</mat-label>
+      <input matInput [(ngModel)]="nuevoUsuario.telefono1">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Teléfono 2</mat-label>
+      <input matInput [(ngModel)]="nuevoUsuario.telefono2">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="nuevoUsuario.email">
+    </mat-form-field>
+
+    <mat-checkbox [(ngModel)]="nuevoUsuario.estado">Activo</mat-checkbox>
+
+    <button mat-raised-button class="btn-verde" (click)="crearUsuario()">Crear</button>
+  </div>
+
+  <h4>Usuarios registrados</h4>
+
+  <!-- Filtro -->
+  <div class="filtros">
+  <mat-form-field appearance="outline">
+    <mat-label>Buscar por nombre</mat-label>
+    <input matInput [(ngModel)]="filtros.nombre" (input)="filtrarUsuarios()" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Buscar por email</mat-label>
+    <input matInput [(ngModel)]="filtros.email" (input)="filtrarUsuarios()" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Buscar por teléfono 1</mat-label>
+    <input matInput [(ngModel)]="filtros.telefono1" (input)="filtrarUsuarios()" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Buscar por teléfono 2</mat-label>
+    <input matInput [(ngModel)]="filtros.telefono2" (input)="filtrarUsuarios()" />
+  </mat-form-field>
+</div>
+
+  <!-- Lista de usuarios -->
+<div *ngIf="usuariosFiltrados.length > 0">
+  <div *ngFor="let u of usuariosFiltrados" class="item-usuario">
+    <div class="usuario-info">
+
+      <!-- Username -->
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="u.username" />
+      </mat-form-field>
+
+      <!-- Email -->
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="u.email" />
+      </mat-form-field>
+
+      <!-- Tipo de usuario -->
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Tipo de usuario</mat-label>
+        <mat-select [(ngModel)]="u.tipoUsuarioId">
+          <mat-option *ngFor="let tipo of tiposUsuario" [value]="tipo.id">
+            {{ tipo.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Teléfono 1 -->
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Teléfono 1</mat-label>
+        <input matInput [(ngModel)]="u.telefono1" />
+      </mat-form-field>
+
+      <!-- Teléfono 2 -->
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Teléfono 2</mat-label>
+        <input matInput [(ngModel)]="u.telefono2" />
+      </mat-form-field>
+
+      <!-- Estado -->
+      <mat-checkbox [(ngModel)]="u.estado">Activo</mat-checkbox>
+    </div>
+
+    <div class="acciones">
+      <button mat-raised-button class="btn-verde" (click)="actualizarUsuario(u)">Guardar</button>
+      <button mat-raised-button class="btn-rojo" (click)="eliminarUsuario(u.id)">Eliminar</button>
+    </div>
+  </div>
+
+  <!-- Controles de paginación -->
+  <div class="paginacion" *ngIf="totalPaginas > 1">
+    <button mat-button (click)="cambiarPagina(-1)" [disabled]="paginaActual === 1">⬅ Anterior</button>
+    <span>Página {{ paginaActual }} de {{ totalPaginas }}</span>
+    <button mat-button (click)="cambiarPagina(1)" [disabled]="paginaActual === totalPaginas">Siguiente ➡</button>
+  </div>
+</div>
+
+<p *ngIf="usuariosFiltrados.length === 0">No hay usuarios registrados o coincidentes.</p>

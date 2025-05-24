@@ -1,0 +1,22 @@
+.maestro-card {
+  padding: 20px;
+  margin: 20px;
+}
+
+.maestro-layout {
+  display: flex;
+  gap: 20px;
+}
+
+.maestro-sidebar {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.maestro-contenido {
+  flex: 1;
+  padding: 10px;
+  border-left: 1px solid #ccc;
+}

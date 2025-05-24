@@ -1,0 +1,19 @@
+<mat-card class="mini-card">
+  <mat-card-title>
+    {{ entrenamiento.nombre }}
+    <button
+      *ngIf="mostrarEliminar"
+      mat-icon-button
+      color="warn"
+      (click)="eliminarEntrenamiento($event)">
+      <mat-icon>🗑</mat-icon>
+    </button>
+  </mat-card-title>
+
+  <mat-card-subtitle>Intensidad: {{ entrenamiento.intensidad?.nombre }}</mat-card-subtitle>
+
+  <mat-card-content>
+    <p>{{ entrenamiento.descripcion }}</p>
+  </mat-card-content>
+</mat-card>
+

@@ -1,0 +1,29 @@
+<div class="maestro-grupos">
+  <h3>Gestión de Grupos Musculares</h3>
+
+  <h4>Crear nuevo grupo muscular</h4>
+  <div class="item-grupo">
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="nuevoGrupo.nombre" />
+    </mat-form-field>
+
+    <button mat-raised-button class="btn-verde" (click)="crearGrupo()">Crear</button>
+  </div>
+
+  <div *ngIf="grupos.length > 0">
+    <h4>Grupos existentes</h4>
+
+    <div *ngFor="let grupo of grupos" class="item-grupo">
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="grupo.nombre" />
+      </mat-form-field>
+
+      <button mat-raised-button class="btn-verde" (click)="actualizarGrupo(grupo)">Guardar</button>
+      <button mat-raised-button class="btn-rojo" (click)="eliminarGrupo(grupo.id)">Eliminar</button>
+    </div>
+  </div>
+
+  <p *ngIf="grupos.length === 0">No hay grupos musculares registrados.</p>
+</div>

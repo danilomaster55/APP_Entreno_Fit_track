@@ -1,0 +1,22 @@
+<div class="menu-container">
+    <div class="menu-card">
+      <h2>Menu de Inicio</h2>      
+  
+      <div class="botones">
+        <button routerLink="/perfil" class="menu-btn">👤 Perfil de usuario</button>
+        <button routerLink="/ejercicios" class="menu-btn">🏋️ Ver ejercicios</button>
+        <button routerLink="/entrenamientos" class="menu-btn">📅 Mis entrenamientos</button>
+        <button routerLink="/crear-entrenamiento" class="menu-btn">➕ Crear entrenamiento</button>
+        
+  
+        <div *ngIf="isAdmin" class="admin-section">
+          <h4>🔧 Acceso administrador</h4>
+          <button routerLink="/maestro" class="menu-btn">🛠️ Gestor Maestro</button>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+

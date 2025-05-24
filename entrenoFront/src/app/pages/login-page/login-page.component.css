@@ -1,0 +1,93 @@
+/* login-page.component.css */
+.login-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.input-group {
+  text-align: center;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  align-self: flex-start;
+  padding-left: 10px;
+}
+
+input {
+  width: 90%;
+  max-width: 350px;
+  padding: 8px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: grey;
+  color: white;
+  cursor: not-allowed;
+}
+
+button:enabled {
+  background-color: #c94a0f;
+  cursor: pointer;
+}
+
+.forgot-password {
+  color: red;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.register-link {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.register-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* ✅ Ajustar tamaño del botón y separarlo del borde derecho */
+.toggle-password {
+  background: none; /* Sin color de fondo */
+  border: none; /* Sin borde */
+  cursor: pointer;
+  font-size: 18px; /* Tamaño adecuado del icono */
+  color: #555; /* Color neutro */
+  width: 25px; /* 🔹 Tamaño pequeño */
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* 🔹 Sin padding extra */
+  margin-left: auto; /* 🔹 Empuja el botón a la derecha */
+  margin-right: 16px; /* 🔹 Lo separa del borde derecho */
+}
+
+
+
+

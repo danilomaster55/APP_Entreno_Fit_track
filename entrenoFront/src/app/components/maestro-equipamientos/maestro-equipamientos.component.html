@@ -1,0 +1,29 @@
+<div class="maestro-equipamiento">
+  <h3>Gestión de Equipamientos</h3>
+
+  <h4>Crear nuevo equipamiento</h4>
+  <div class="item-equipamiento">
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="nuevoEquipamiento.nombre" />
+    </mat-form-field>
+
+    <button mat-raised-button class="btn-verde" (click)="crearEquipamiento()">Crear</button>
+  </div>
+
+  <div *ngIf="equipamientos.length > 0">
+    <h4>Equipamientos existentes</h4>
+
+    <div *ngFor="let equipamiento of equipamientos" class="item-equipamiento">
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="equipamiento.nombre" />
+      </mat-form-field>
+
+      <button mat-raised-button class="btn-verde" (click)="actualizarEquipamiento(equipamiento)">Guardar</button>
+      <button mat-raised-button class="btn-rojo" (click)="eliminarEquipamiento(equipamiento.id)">Eliminar</button>
+    </div>
+  </div>
+
+  <p *ngIf="equipamientos.length === 0">No hay equipamientos registrados.</p>
+</div>

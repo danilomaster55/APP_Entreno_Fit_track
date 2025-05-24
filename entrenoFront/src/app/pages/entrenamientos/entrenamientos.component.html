@@ -1,0 +1,49 @@
+<div class="entrenamientos-layout">
+  <!-- Columna izquierda: Lista de entrenamientos -->
+  <div class="entrenamientos-lista">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="titulo-panel">Entrenamientos Base</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="cards-container">
+          <app-entrenamiento-mini-card
+            *ngFor="let entrenamiento of entrenamientosBase"
+            [entrenamiento]="entrenamiento"
+            (click)="seleccionarEntrenamiento(entrenamiento)"
+          ></app-entrenamiento-mini-card>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="titulo-panel">Mis Entrenamientos</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="cards-container">
+          <!-- Mostrar mensaje si no hay entrenamientos -->
+          <div *ngIf="entrenamientosUsuario.length === 0" class="no-entrenamientos">
+            <p>No hay entrenamientos personalizados</p>
+          </div>
+          <!-- Mostrar los entrenamientos si existen -->
+          <app-entrenamiento-mini-card
+            *ngFor="let entrenamiento of entrenamientosUsuario"
+            [entrenamiento]="entrenamiento"
+            [mostrarEliminar]="true"
+            (click)="seleccionarEntrenamiento(entrenamiento)"
+            (eliminar)="eliminarEntrenamiento(entrenamiento)">
+          </app-entrenamiento-mini-card>
+        </div>
+      </mat-expansion-panel>
+
+    </mat-accordion>
+  </div>
+
+  <!-- Columna derecha: Detalle del entrenamiento seleccionado -->
+  <div class="entrenamiento-detalle" *ngIf="entrenamientoSeleccionado">
+    <app-crear-entrenamiento
+        *ngIf="entrenamientoSeleccionado"
+        [entrenamientoExistente]="entrenamientoSeleccionado">
+    </app-crear-entrenamiento>
+
+  </div>
+</div>

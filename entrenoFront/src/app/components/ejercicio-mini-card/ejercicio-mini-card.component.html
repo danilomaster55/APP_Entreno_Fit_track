@@ -1,0 +1,22 @@
+<div class="mini-card">
+  <img
+    [src]="rutaImagen"
+    (error)="usarImagenPorDefecto($event)"
+    alt="{{ ejercicio.nombre }}"
+    class="mini-imagen"
+  />
+
+  <div class="mini-info">
+  <strong>{{ ejercicio.nombre }}</strong>
+  <span *ngIf="ejercicio.grupoMuscular">({{ ejercicio.grupoMuscular.nombre }})</span>    
+  </div>
+  <div class="mini-info" *ngIf="ejercicio.nivelDificultad">
+  <span><strong>Dificultad:</strong> {{ ejercicio.nivelDificultad.nivel }}</span>
+  </div>
+
+  <div class="mini-info" *ngIf="ejercicio.tipoEjercicio">
+    <span><strong>Tipo:</strong> {{ ejercicio.tipoEjercicio.nombre }}</span>
+  </div>
+  
+ 
+</div>

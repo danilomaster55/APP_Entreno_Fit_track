@@ -1,0 +1,52 @@
+.footer {
+    width: 100%;
+    background-color: #c94a0f;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between; /* Distribuye las columnas por todo el ancho */
+    align-items: center;
+    width: 100%; /* Usa todo el ancho disponible */
+    max-width: 1200px; /* Opcional: evita que se expanda demasiado en pantallas grandes */
+    margin: 0 auto;
+    padding: 0 20px; /* Añadimos padding lateral para que no se pegue a los bordes */
+  }
+  
+  .footer-column {
+    flex: 1; /* Asegura que cada columna ocupe el mismo espacio */
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .footer-logo {
+    width: 60px; /* Aumentamos ligeramente el tamaño del logo */
+    height: 60px;
+  }
+  
+  .social-icons a {
+    display: inline-flex; /* Permite que los iconos no se corten */
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Ajusta el tamaño */
+    height: 40px;
+    text-decoration: none;
+  }
+  
+  .social-icons mat-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, color 0.3s ease;
+    gap: 20px; /* Asegura separación adecuada */
+  }
+  
+  .social-icons mat-icon:hover {
+    color: #ffcc00; /* Cambia de color al pasar el mouse */
+    transform: scale(1.2);
+  }
+  

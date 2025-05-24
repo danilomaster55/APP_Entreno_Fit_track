@@ -1,0 +1,55 @@
+<div class="detalle-container">
+  <!-- Sección superior: Acciones CRUD -->
+  <div class="acciones-crud">
+    <button mat-button color="primary" (click)="editarEntrenamiento()">Editar</button>
+    <button mat-button color="warn" (click)="eliminarEntrenamiento()">Eliminar</button>
+    <button mat-button (click)="imprimirEntrenamiento()">Imprimir</button>
+  </div>
+
+  <!-- Sección inferior: Detalles del entrenamiento -->
+  <div id="resumen-entrenamiento" class="zona-vista-previa">
+    <!-- Cabecera con título, usuario y fecha -->
+    <div class="cabecera-pdf">
+      <h2>{{ entrenamiento.nombre || 'Entrenamiento personalizado' }}</h2>
+      <p><strong>Creado por:</strong> {{ entrenamiento.creadoPor?.username || 'Desconocido' }}</p>
+      <p><strong>Fecha:</strong> {{ entrenamiento.fechaCreacion | date: 'dd/MM/yyyy' }}</p>
+    </div>
+
+    <!-- Descripción general -->
+    <div class="descripcion-pdf">
+      <p><strong>Descripción:</strong> {{ entrenamiento.descripcion || 'Sin descripción.' }}</p>
+      <p><strong>Intensidad:</strong> {{ entrenamiento.intensidad?.nombre || 'No especificada' }}</p>
+      <p><strong>Descanso entre ejercicios:</strong> {{ entrenamiento.intensidad?.segundosDescanso }} segundos</p>
+      <p><strong>Duración estimada:</strong> {{ entrenamiento.duracionEstimado }} minutos</p>
+      <p><strong>Grupos musculares trabajados:</strong> {{ entrenamiento.gruposMusculares?.join(', ') }}</p>
+    </div>
+
+    <!-- Sección de ejercicios -->
+    <div class="seccion-ejercicios">
+      <!-- Calentamiento -->
+      <h3>🟠 Calentamiento</h3>
+      <div class="cards-container">
+        <app-ejercicio-mini-card *ngFor="let ej of entrenamiento.calentamiento" [ejercicio]="ej"></app-ejercicio-mini-card>
+      </div>
+
+      <!-- Entrenamiento Principal -->
+      <h3>🔴 Entrenamiento Principal</h3>
+      <p>Realizar {{ entrenamiento.intensidad?.nombre?.toLowerCase() === 'alta' ? '4' : '2' }} veces</p>
+      <div class="cards-container">
+        <app-ejercicio-mini-card *ngFor="let ej of entrenamiento.principal" [ejercicio]="ej"></app-ejercicio-mini-card>
+      </div>
+
+      <!-- Vuelta a la Calma -->
+      <h3>🟢 Vuelta a la Calma</h3>
+      <div class="cards-container">
+        <app-ejercicio-mini-card *ngFor="let ej of entrenamiento.calma" [ejercicio]="ej"></app-ejercicio-mini-card>
+      </div>
+    </div>
+
+    <!-- Pie con logo -->
+    <div class="pie-logo">
+      <img src="assets/images/favicon.ico" alt="Logo" height="50" />
+      <p>Generado con la app <strong>FitTrack</strong></p>
+    </div>
+  </div>
+</div>

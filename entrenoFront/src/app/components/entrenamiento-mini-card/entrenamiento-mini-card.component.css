@@ -1,0 +1,36 @@
+.mini-card {
+  width: 300px;
+  margin: 10px;
+  position: relative;
+  padding: 10px; /* Añadimos padding general a la tarjeta */
+  background-color: #ffe0b2; /* Fondo naranja claro */
+  border-radius: 8px; /* Bordes redondeados para darle un toque suave */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave para resaltar la tarjeta */
+}
+
+.mini-card mat-card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px; /* Espacio entre el título y la intensidad */
+  padding-left: 10px; /* Margen izquierdo para el título */
+  padding-right: 10px; /* Margen derecho para separar del botón */
+}
+
+.mini-card mat-card-subtitle {
+  padding-left: 10px; /* Margen izquierdo para la intensidad */
+  padding-right: 10px; /* Margen derecho para mantener el alineado */
+  font-size: 14px; /* Ajustar el tamaño de la intensidad */
+  color: #666; /* Color más suave para la intensidad */
+}
+
+.mini-card mat-card-title button {
+  margin-left: 10px; /* Espacio entre el título y el botón */
+  padding: 0; /* Eliminar el padding del botón */
+}
+
+.mini-card mat-card-title mat-icon {
+  font-size: 20px; /* Tamaño del icono de eliminar */
+}
+
+

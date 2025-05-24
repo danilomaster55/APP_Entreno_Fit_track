@@ -1,0 +1,29 @@
+<div class="maestro-niveles">
+  <h3>Gestión de Niveles de Dificultad</h3>
+
+  <h4>Crear nuevo nivel</h4>
+  <div class="item-nivel">
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="nuevoNivel.nivel" />
+    </mat-form-field>
+
+    <button mat-raised-button class="btn-verde" (click)="crearNivel()">Crear</button>
+  </div>
+
+  <div *ngIf="niveles.length > 0">
+    <h4>Niveles existentes</h4>
+
+    <div *ngFor="let nivel of niveles" class="item-nivel">
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="nivel.nivel" />
+      </mat-form-field>
+
+      <button mat-raised-button class="btn-verde" (click)="actualizarNivel(nivel)">Guardar</button>
+      <button mat-raised-button class="btn-rojo" (click)="eliminarNivel(nivel.id)">Eliminar</button>
+    </div>
+  </div>
+
+  <p *ngIf="niveles.length === 0">No hay niveles registrados.</p>
+</div>

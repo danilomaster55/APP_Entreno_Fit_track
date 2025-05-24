@@ -1,0 +1,98 @@
+.home-container {
+    text-align: center;
+  }
+  
+  /* Sección Hero */
+  .hero {
+    
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .hero-text {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .hero h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .hero p {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+  
+  .btn:hover {
+    background: #0056b3;
+  }
+  
+  /* Sección de Beneficios */
+  .benefits {
+    padding: 50px 20px;
+    background: #f4f4f4;
+  }
+  
+  .benefits h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #222;
+  }
+  
+  .benefits-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .benefit-item {
+    width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .benefit-item img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+  
+  .benefit-item h3 {
+    font-size: 22px;
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  /* Sección de Llamada a la Acción */
+  .cta {
+    background: #df950b;
+    color: white;
+    padding: 50px 20px;
+  }
+  
+  .cta h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+  
+  

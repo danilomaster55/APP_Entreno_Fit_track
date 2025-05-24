@@ -1,0 +1,28 @@
+<nav class="navbar">
+  <!-- Logo en la parte izquierda -->
+  <div class="navbar-logo">
+    <a routerLink="/">
+      <img src="favicon.ico" alt="Logo">
+    </a>
+  </div>
+
+  <!-- Contenedor de botones con fondo -->
+  <div class="navbar-buttons">
+    <div class="navbar-links">
+      <a routerLink="/contacto">Contáctanos</a>
+      <a routerLink="/sobre-nosotros">Sobre Nosotros</a>
+
+      <!-- Si el usuario NO está logueado, mostrar Login y Registro -->
+      <ng-container *ngIf="!isLoggedIn">
+        <a routerLink="/login">Login</a>
+        <a routerLink="/registro">Registro</a>
+      </ng-container>
+
+      <!-- Si el usuario ESTÁ logueado, mostrar Cuenta y Desconectar -->
+      <ng-container *ngIf="isLoggedIn">
+        <a routerLink="/menu-user">Cuenta</a>
+        <a (click)="logout()" style="cursor: pointer; color: rgb(0, 0, 0);">Desconectar</a>
+      </ng-container>
+    </div>
+  </div>
+</nav>

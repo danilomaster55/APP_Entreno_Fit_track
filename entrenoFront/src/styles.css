@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { 
+    margin: 0;     
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: linear-gradient(135deg, #b96e17, #A8B8D8); /* Azul oscuro a plateado */
+ 
+}
+main {
+    margin-top: 70px; /* ✅ Ajusta este valor según la altura de la navbar */
+    padding: 20px;
+  }
+  h1 {
+    color: rgb(224, 224, 224);
+  }
+  

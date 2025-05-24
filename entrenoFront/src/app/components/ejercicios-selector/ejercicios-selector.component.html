@@ -1,0 +1,32 @@
+<div class="filtros-selector">
+  <select [(ngModel)]="filtroGrupo" (change)="aplicarFiltros()">
+    <option value="">Grupo Muscular</option>
+    <option *ngFor="let grupo of gruposMusculares" [value]="grupo.nombre">{{ grupo.nombre }}</option>
+  </select>
+
+  <select [(ngModel)]="filtroDificultad" (change)="aplicarFiltros()">
+    <option value="">Dificultad</option>
+    <option *ngFor="let d of nivelesDificultad" [value]="d.nivel">{{ d.nivel }}</option>
+  </select>
+
+  <select [(ngModel)]="filtroTipo" (change)="aplicarFiltros()">
+    <option value="">Tipo</option>
+    <option *ngFor="let t of tiposEjercicio" [value]="t.nombre">{{ t.nombre }}</option>
+  </select>
+
+  <input
+    type="text"
+    [(ngModel)]="busquedaNombre"
+    (input)="aplicarFiltros()"
+    placeholder="Buscar por nombre..."
+    class="input-busqueda"
+  />
+</div>
+
+<div class="selector-grid">
+  <app-ejercicio-mini-card
+    *ngFor="let ejercicio of ejerciciosFiltrados"
+    [ejercicio]="ejercicio"
+    (click)="seleccionarEjercicio(ejercicio)">
+  </app-ejercicio-mini-card>
+</div>

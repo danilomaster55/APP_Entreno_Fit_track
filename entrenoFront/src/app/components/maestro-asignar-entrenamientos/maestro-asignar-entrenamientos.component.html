@@ -1,0 +1,33 @@
+<div class="asignacion-container">
+  <h3>Asignar entrenamientos a usuarios</h3>
+
+  <mat-form-field appearance="outline" class="campo">
+    <mat-label>Selecciona un usuario</mat-label>
+    <mat-select [(ngModel)]="usuarioSeleccionadoId" (selectionChange)="onUsuarioSeleccionado()">
+      <mat-option *ngFor="let u of usuarios" [value]="u.id">{{ u.username }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="campo" *ngIf="usuarioSeleccionadoId">
+    <mat-label>Selecciona entrenamiento</mat-label>
+    <mat-select [(ngModel)]="entrenamientoSeleccionadoId">
+      <mat-option *ngFor="let e of entrenamientos" [value]="e.id">{{ e.nombre }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="asignarEntrenamiento()" [disabled]="!entrenamientoSeleccionadoId">
+    Asignar
+  </button>
+
+  <div *ngIf="asignaciones.length > 0">
+    <h4>Entrenamientos asignados</h4>
+    <ul>
+      <li *ngFor="let asignacion of asignaciones">
+        {{ asignacion.entrenamiento.nombre }} ({{ asignacion.entrenamiento.intensidad?.nombre }})
+        <button mat-button color="warn" (click)="eliminarAsignacion(asignacion.id)">Eliminar</button>
+      </li>
+    </ul>
+  </div>
+
+  <p *ngIf="usuarioSeleccionadoId && asignaciones.length === 0">Este usuario no tiene entrenamientos asignados.</p>
+</div>

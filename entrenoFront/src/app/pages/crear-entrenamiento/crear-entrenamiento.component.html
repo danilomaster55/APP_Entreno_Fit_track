@@ -1,0 +1,172 @@
+<div class="crear-entrenamiento-card">
+  <div class="card-seleccion">
+  <div class="seleccion-layout">
+    
+    <!-- IZQUIERDA: Secciones del entrenamiento -->
+    <div class="seccion-izquierda">
+      <!-- Calentamiento -->
+      <div class="seccion-entrenamiento">
+        <div class="titulo-con-boton">
+          <h3>Calentamiento</h3>
+          <button (click)="abrirSelector('calentamiento')">➕ Añadir ejercicio</button>
+        </div>
+
+        <div class="lista-mini-cards">
+          <div class="ejercicio-controlado" *ngFor="let ejercicio of calentamiento; let i = index">
+          <app-ejercicio-mini-card [ejercicio]="ejercicio"></app-ejercicio-mini-card>
+          <div class="controles-ejercicio">
+            <button (click)="eliminarEjercicio('calentamiento', i)">🗑</button>
+          </div>
+        </div>
+
+        </div>
+      </div>
+
+      <!-- Entrenamiento principal -->
+      <div class="seccion-entrenamiento">       
+        <div class="titulo-con-boton">
+          <h3>Entrenamiento principal</h3>
+          <button (click)="abrirSelector('principal')">➕ Añadir ejercicio</button>
+        </div>
+
+        <div class="lista-mini-cards">         
+          <div class="ejercicio-controlado" *ngFor="let ejercicio of principal; let i = index">
+            <app-ejercicio-mini-card [ejercicio]="ejercicio"></app-ejercicio-mini-card>
+            <div class="controles-ejercicio">
+              <button (click)="eliminarEjercicio('principal', i)">🗑</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Vuelta a la calma -->
+      <div class="seccion-entrenamiento">
+        <div class="titulo-con-boton">
+          <h3>Vuelta a la calma</h3>
+          <button (click)="abrirSelector('calma')">➕ Añadir ejercicio</button>
+        </div>
+
+        <div class="lista-mini-cards">         
+          <div class="ejercicio-controlado" *ngFor="let ejercicio of calma; let i = index">
+          <app-ejercicio-mini-card [ejercicio]="ejercicio"></app-ejercicio-mini-card>
+          <div class="controles-ejercicio">
+            <button (click)="eliminarEjercicio('calma', i)">🗑</button>
+          </div>
+        </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- DERECHA: Selector fijo -->
+    <div class="seccion-derecha">
+      
+      <p *ngIf="!seccionActual">Haz clic en "Añadir ejercicio" en una sección para empezar.</p>
+      <app-ejercicios-selector
+        *ngIf="seccionActual"
+        (ejercicioSeleccionado)="agregarEjercicio($event)">
+      </app-ejercicios-selector>
+    </div>
+  </div>
+</div>
+
+
+<div class="resumen-layout">
+  <!-- 📝 Zona de entrada del usuario -->
+  <div class="zona-entrada">
+    <h3>Datos del entrenamiento</h3>
+
+    <label for="nombreEntrenamiento">Nombre:</label>
+    <input
+      id="nombreEntrenamiento"
+      type="text"
+      [(ngModel)]="nombreEntrenamiento"
+      placeholder="Introduce un nombre"
+    />
+
+    <label for="descripcionEntrenamiento">Descripción:</label>
+    <textarea
+      id="descripcionEntrenamiento"
+      [(ngModel)]="descripcionEntrenamiento"
+      placeholder="Breve descripción..."
+      rows="3">
+    </textarea>
+
+    <label for="intensidad">Intensidad:</label>
+    <select [(ngModel)]="intensidadSeleccionada" id="intensidad">
+      <option value="">Selecciona una intensidad</option>
+      <option *ngFor="let i of intensidades" [ngValue]="i">{{ i.nombre }}</option>
+    </select>
+        <!-- Guardar entrenamiento -->
+    <button 
+      (click)="guardarEntrenamiento()" 
+      [disabled]="!puedeGuardar"
+      class="guardar-btn">
+      💾 Guardar entrenamiento
+    </button>
+
+    <!-- Descargar o imprimir PDF -->
+    <button 
+      (click)="descargarPDF()" 
+      [disabled]="!puedeGuardar"
+      class="imprimir-btn">
+      🖨 Imprimir / Descargar PDF
+    </button>
+    <p *ngIf="!puedeGuardar" class="mensaje-aviso">
+      ⚠️ Debes completar todos los campos: nombre del entrenamiento, intensidad seleccionada, y al menos un ejercicio en cada sección.
+    </p>
+  </div>
+
+  <div id="resumen-entrenamiento" class="zona-vista-previa">
+  <!-- 🔹 Cabecera con título, usuario y fecha -->
+  <div class="cabecera-pdf">
+    <h2>{{ nombreEntrenamiento || 'Entrenamiento personalizado' }}</h2>
+    <p><strong>Creado por:</strong> {{ usuarioService.getUsuario()?.username || 'Desconocido' }}</p>
+    <p><strong>Fecha:</strong> {{ hoy | date: 'dd/MM/yyyy' }}</p>
+  </div>
+
+  <!-- 🔹 Descripción general -->
+  <div class="descripcion-pdf">
+    <p><strong>Descripción:</strong> {{ descripcionEntrenamiento || 'Sin descripción.' }}</p>
+    <p><strong>Intensidad:</strong> {{ intensidadSeleccionada?.nombre || 'No especificada' }}</p>
+    <p><strong>Descanso entre ejercicios:</strong> {{ intensidadSeleccionada?.segundosDescanso }} segundos</p>
+    <p><strong>Duración estimada:</strong> {{ duracionCalculada }} minutos</p>
+    <p><strong>Grupos musculares trabajados:</strong> {{ gruposMusculares.join(', ') }}</p>
+  </div>
+
+  <!-- 🔹 Sección de ejercicios -->
+  <div class="seccion-ejercicios">
+   <!-- 🔶 Calentamiento -->
+<h3>🟠 Calentamiento</h3>
+<div class="cards-container">
+  <app-ejercicio-mini-card *ngFor="let ej of calentamiento" [ejercicio]="ej"></app-ejercicio-mini-card>
+</div>
+
+<!-- 🔴 Entrenamiento Principal -->
+<h3>🔴 Entrenamiento Principal</h3>
+<p>Realizar {{ intensidadSeleccionada?.nombre?.toLowerCase() === 'alta' ? '4' : '2' }} veces</p>
+<div class="cards-container">
+  <app-ejercicio-mini-card *ngFor="let ej of principal" [ejercicio]="ej"></app-ejercicio-mini-card>
+</div>
+
+<!-- 🟢 Vuelta a la Calma -->
+<h3>🟢 Vuelta a la Calma</h3>
+<div class="cards-container">
+  <app-ejercicio-mini-card *ngFor="let ej of calma" [ejercicio]="ej"></app-ejercicio-mini-card>
+</div>
+
+  <!-- 🔹 Pie con logo -->
+  <div class="pie-logo">
+    <img src="assets/images/favicon.ico" alt="Logo" height="50" />
+    <p>Generado con la app <strong>FitTrack</strong></p>
+  </div>
+</div>
+
+</div>
+
+
+
+
+
+</div>

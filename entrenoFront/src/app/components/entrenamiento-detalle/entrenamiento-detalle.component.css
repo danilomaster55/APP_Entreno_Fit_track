@@ -1,0 +1,57 @@
+/* Contenedor principal del visor de detalles */
+.detalle-container {
+  background-color: #ffffff; /* Fondo blanco */
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente */
+  justify-content: center; /* Centra verticalmente si es necesario */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Sección de acciones CRUD */
+.acciones-crud {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  justify-content: center;
+}
+
+/* Sección de vista previa del entrenamiento */
+.zona-vista-previa {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+
+/* Cabecera del PDF */
+.cabecera-pdf {
+  margin-bottom: 16px;
+}
+
+/* Descripción del PDF */
+.descripcion-pdf {
+  margin-bottom: 24px;
+}
+
+/* Sección de ejercicios */
+.seccion-ejercicios {
+  margin-bottom: 24px;
+}
+
+/* Contenedor de tarjetas de ejercicios */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+/* Pie con logo */
+.pie-logo {
+  margin-top: 24px;
+  text-align: center;
+}

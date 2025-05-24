@@ -1,0 +1,47 @@
+<mat-card class="maestro-card">
+  <div class="maestro-layout">
+    
+    <!-- Menú lateral de botones -->
+    <div class="maestro-sidebar">
+        
+      <button mat-button (click)="seleccionar('intensidades')">Intensidades</button>
+      <button mat-button (click)="seleccionar('grupos')">Grupos Musculares</button>
+      <button mat-button (click)="seleccionar('niveles')">Niveles de dificultad</button>
+      <button mat-button (click)="seleccionar('unidad')">Tipos de unidad</button>
+      <button mat-button (click)="seleccionar('tiposEjercicio')">Tipos de ejercicio</button>
+      <button mat-button (click)="seleccionar('equipamientos')">Equipamientos</button>
+      <button mat-button (click)="seleccionar('usuarios')">Usuarios</button>
+      <button mat-button (click)="seleccionar('asignarEntrenamientos')">Asignación de entrenamientos</button>
+
+
+
+
+
+
+      
+    </div>
+
+    <!-- Panel dinámico de gestión -->
+    <div class="maestro-contenido">
+      <ng-container [ngSwitch]="opcionSeleccionada">
+        <app-maestro-intensidad *ngSwitchCase="'intensidades'"></app-maestro-intensidad>
+        <app-maestro-grupos-musculares *ngSwitchCase="'grupos'"></app-maestro-grupos-musculares>
+        <app-maestro-niveles-dificultad *ngSwitchCase="'niveles'"></app-maestro-niveles-dificultad>
+        <app-maestro-tipos-unidad *ngSwitchCase="'unidad'"></app-maestro-tipos-unidad>
+        <app-maestro-tipos-ejercicio *ngSwitchCase="'tiposEjercicio'"></app-maestro-tipos-ejercicio>
+        <app-maestro-equipamientos *ngSwitchCase="'equipamientos'"></app-maestro-equipamientos>
+        <app-maestro-usuarios *ngSwitchCase="'usuarios'"></app-maestro-usuarios>
+        <app-maestro-asignar-entrenamientos *ngSwitchCase="'asignarEntrenamientos'"></app-maestro-asignar-entrenamientos>
+
+
+
+
+
+
+        
+
+        <p *ngSwitchDefault>Selecciona una categoría para administrar.</p>
+      </ng-container>
+    </div>
+  </div>
+</mat-card>

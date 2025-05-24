@@ -1,0 +1,34 @@
+.mini-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.mini-card:hover {
+  background-color: #f0f0f0;
+}
+
+.mini-imagen {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.mini-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+:host {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+

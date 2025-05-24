@@ -1,0 +1,58 @@
+<div class="contenedor-principal">
+  <div class="card-ejercicios">
+    <button class="btn-volver" routerLink="/menu-user">← Volver al menú</button>
+
+    <h2>Enciclopedia de Ejercicios</h2>
+
+    <!-- Filtros -->
+    <div class="filtros">
+      <div class="filtros-selectores">
+        <select [(ngModel)]="filtroGrupo" (change)="aplicarFiltros()">
+          <option value="">Grupo Muscular</option>
+          <option *ngFor="let grupo of gruposMusculares" [value]="grupo.nombre">
+            {{ grupo.nombre }}
+          </option>
+        </select>
+    
+        <select [(ngModel)]="filtroDificultad" (change)="aplicarFiltros()">
+          <option value="">Dificultad</option>
+          <option *ngFor="let dificultad of nivelesDificultad" [value]="dificultad.nivel">
+            {{ dificultad.nivel }}
+          </option>
+        </select>
+    
+        <select [(ngModel)]="filtroTipo" (change)="aplicarFiltros()">
+          <option value="">Tipo de Ejercicio</option>
+          <option *ngFor="let tipo of tiposEjercicio" [value]="tipo.nombre">
+            {{ tipo.nombre }}
+          </option>
+        </select>
+      </div>
+    
+      <input
+        type="text"
+        [(ngModel)]="busquedaNombre"
+        (input)="aplicarFiltros()"
+        placeholder="Buscar por nombre..."
+        class="input-busqueda"
+      />
+    </div>
+
+
+    <!-- Estado -->
+    <div *ngIf="cargando">Cargando ejercicios...</div>
+    <div *ngIf="!cargando && ejerciciosFiltrados.length === 0">
+      No hay ejercicios que coincidan con los filtros seleccionados.
+    </div>
+
+    <!-- Grid de ejercicios -->
+    <div class="grid-ejercicios" *ngIf="!cargando && ejerciciosFiltrados.length">
+      <app-ejercicio-card
+        *ngFor="let ejercicio of ejerciciosFiltrados"
+        [ejercicio]="ejercicio"
+      ></app-ejercicio-card>
+    </div>
+  </div>
+</div>
+
+

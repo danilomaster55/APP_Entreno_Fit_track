@@ -1,0 +1,30 @@
+<div class="card">
+  <img [src]="rutaImagen"
+  (error)="usarImagenPorDefecto($event)"
+  alt="{{ ejercicio.nombre }}"
+  class="imagen-ejercicio" />
+
+
+  
+    <div class="contenido">
+      <h3>{{ ejercicio.nombre }}</h3>
+      <p class="descripcion">{{ ejercicio.descripcion }}</p>
+  
+      <ul class="detalle">
+        <li><strong>Grupo muscular:</strong> {{ ejercicio.grupoMuscular?.nombre }}</li>
+        <li><strong>Tipo:</strong> {{ ejercicio.tipoEjercicio?.nombre }}</li>
+        <li><strong>Dificultad:</strong> {{ ejercicio.nivelDificultad?.nivel }}</li>
+        <li>
+          <strong>Valor sugerido:</strong>
+          {{ ejercicio.valorSugerido }} {{ ejercicio.tipoUnidad?.nombre }}
+        </li>
+        <li *ngIf="ejercicio.equipamientos?.length">
+          <strong>Equipamiento:</strong>
+          <span *ngFor="let e of ejercicio.equipamientos; let last = last">
+            {{ e.nombre }}<span *ngIf="!last">, </span>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  

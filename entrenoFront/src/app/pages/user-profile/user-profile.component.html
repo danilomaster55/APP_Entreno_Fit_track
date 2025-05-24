@@ -1,0 +1,77 @@
+<div class="profile-container">
+    <div class="profile-card" *ngIf="user; else errorTemplate">
+      <h2 class="welcome-message">Usuario: {{ user.username }}</h2>
+      <h3 class="role">Rol: {{ user.tipoUsuario?.nombre || 'No proporcionado' }}</h3>
+  
+      <div class="user-info">
+        <p><strong>Email: </strong> {{ user.email || 'No proporcionado' }}</p>
+        <p><strong>Teléfono 1: </strong> {{ user.telefono1 || 'No proporcionado' }}</p>
+        <p><strong>Teléfono 2: </strong> {{ user.telefono2 || 'No proporcionado' }}</p>
+  
+        <!-- 🔹 Solo los administradores ven estos datos -->
+        <div *ngIf="isAdmin">
+          <p><strong>Número de usuario: </strong> {{ user.id }}</p>
+          <p><strong>Fecha de Registro: </strong> 
+            {{ user.fechaRegistro ? (user.fechaRegistro | date: 'dd/MM/yyyy HH:mm:ss') : 'No proporcionado' }}
+          </p>
+          <p><strong>Última Conexión: </strong> 
+            {{ user.ultimaConexion ? (user.ultimaConexion | date: 'dd/MM/yyyy HH:mm:ss') : 'No proporcionado' }}
+          </p>
+        </div>
+  
+        <!-- Contraseña con opción de mostrar/ocultar -->
+        <p><strong>Contraseña: </strong> 
+          <span>{{ passwordVisible ? user.password : '*******' }}</span>
+          <button (click)="togglePasswordVisibility()" class="toggle-password">
+            {{ passwordVisible ? '🙈' : '👁️' }}
+          </button>
+        </p>
+      </div>
+  
+      <!-- 🔹 Botón para modificar información -->
+      <button (click)="toggleEditForm()" class="edit-btn">Modificar Información</button>
+  
+      <!-- 🔹 Formulario de edición (se muestra al hacer clic) -->
+      <div *ngIf="isEditing" class="edit-form">
+        <h3>Modificar Información</h3>
+        
+        <!-- 🔹 Campo de contraseña con confirmación -->
+        <label for="newPassword">Nueva Contraseña:</label>
+        <div class="password-container">
+          <input id="newPassword" [type]="passwordVisible ? 'text' : 'password'" [(ngModel)]="editData.password" />
+          <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
+            {{ passwordVisible ? '🙈' : '👁️' }}
+          </button>
+        </div>
+
+        <label for="confirmPassword">Confirmar Contraseña:</label>
+        <div class="password-container">
+          <input id="confirmPassword" [type]="passwordVisible ? 'text' : 'password'" [(ngModel)]="confirmPassword" />
+        </div>
+        <p *ngIf="passwordsNoCoinciden" class="error">Las contraseñas no coinciden</p>
+
+        <!-- 🔹 Solo los administradores pueden modificar estos datos -->
+        <div *ngIf="isAdmin">
+          <label for="editEmail">Email:</label>
+          <input id="editEmail" type="text" [(ngModel)]="editData.email" />
+
+          <label for="editTelefono1">Teléfono 1:</label>
+          <input id="editTelefono1" type="text" [(ngModel)]="editData.telefono1" />
+
+          <label for="editTelefono2">Teléfono 2:</label>
+          <input id="editTelefono2" type="text" [(ngModel)]="editData.telefono2" />
+        </div>
+
+        <button (click)="updateUser()" [disabled]="passwordsNoCoinciden" class="save-btn">Guardar Cambios</button>
+        <button (click)="toggleEditForm()" class="cancel-btn">Cancelar</button>
+      </div> 
+      
+    </div>
+  
+    <!-- Mensaje de error si no se pudo cargar la información -->
+    <ng-template #errorTemplate>
+      <div class="error-message">
+        <p>{{ errorMessage }}</p>
+      </div>
+    </ng-template>
+  </div>
